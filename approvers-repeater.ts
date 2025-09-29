@@ -284,13 +284,36 @@ export default class ApproversRepeater extends LitElement {
   // ======= Persistence =======
   private async loadValue() {
     try {
+      console.log('this.value for checking need to import: ', this.value);
+
+      
+      //if (this.value.trim().length === 0) {
+      //if (this.value !== target.value) {
+        if (this.jsonTargetId) {
+          let target = this.targetDocument.getElementById(this.jsonTargetId) as HTMLTextAreaElement | null;
+          
+          if (target) {
+            if (this.value !== target.value) {
+              this.value = target.value;
+            }
+            console.log('updated this.value with contents of textbox:', target.value);
+          } else {
+            console.warn('Textbox not found for ID:', this.jsonTargetId);
+          }
+        }
+
+      //} 
+      
       this.rows = JSON.parse(this.value || '[]');
       if (!Array.isArray(this.rows)) this.rows = [];
       console.log('Loaded rows:', this.rows);
+  
     } catch (e) {
       console.error('Failed to parse initial value:', this.value, e);
       this.rows = [];
     }
+
+
     this.renumberOrders();
     if (!this.displayMode) {
       this.ensureMinRows();
@@ -311,7 +334,7 @@ export default class ApproversRepeater extends LitElement {
             this.selections[i] = { id: row.approver, displayName: row.approver, email: row.approver, login: row.approver };
             this.terms[i] = row.approver;
             console.warn(`Failed to fetch user details for ${row.approver}:`, err);
-            this.errorMsg = 'Unable to load details for some approvers.';
+            this.errorMsg = 'Unable to load details for some approvers, please make sure pop-ups are enabled for this site.';
           }
         }
       }
@@ -475,7 +498,7 @@ export default class ApproversRepeater extends LitElement {
     const top = Math.max(1, Math.min(this.maxSuggestions || 8, 25));
     console.log('Graph search:', { term, endpoint: this.graphEndpoint, top });
     if (this.graphEndpoint === 'users') {
-      const url = `https://graph.microsoft.com/v1.0/users?$search="displayName:${encodeURIComponent(term)}"&$filter=endsWith(mail,'FILTER EMAIL SEARCH RESULTS.com')&$orderBy=displayName&$top=${top}`;
+      const url = `https://graph.microsoft.com/v1.0/users?$search="displayName:${encodeURIComponent(term)}"&$filter=endsWith(mail,'yageo.com')&$orderBy=displayName&$top=${top}`;
       console.log('Url', url);
       const res = await fetch(url, { headers: { Authorization: `Bearer ${token}`, 'ConsistencyLevel': 'eventual' } });
       if (!res.ok) {
@@ -765,5 +788,4 @@ export default class ApproversRepeater extends LitElement {
     console.log('Rendered edit/new mode UI');
     return editHtml;
   }
-
 }
