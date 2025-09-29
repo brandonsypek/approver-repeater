@@ -4,3 +4,4 @@ The plugin usees Azure AD App Client ID and your Tenand ID to gain access to the
 This custom plugin saves data in json and uses a multi line text field and its assosiated ID to save to SharePoint to get called back on in Nintex Workflow.
 Use the Force Editable Mode control within the 'Approvers Repeater' and set where you want the control to be "editable" eg. [Form mode].[Is New mode].
 To hide the Multi Line text field in the form that saves the data to json use the "Working CSS for Approvers Repeater" with the assosiated ID for the Multi Line text.
+In approvers-repeater.ts change the "FILTER EMAIL SEARCH RESULTS" to the clients email to filter results, or remove entirely.
