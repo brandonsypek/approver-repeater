@@ -1,0 +1,25 @@
+{
+  "name": "nintex-approvers-plugin",
+  "version": "1.0.0",
+  "description": "Custom Nintex Forms plugin for a repeating approvers section",
+  "main": "approvers-repeater.ts",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "@azure/msal-browser": "^4.23.0",
+    "@nintex/form-plugin-contract": "^1.0.0",
+    "lit": "^3.0.0",
+    "tslib": "^2.6.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/microsoft-ajax": "^4.5.0",
+    "@types/sharepoint": "^2016.1.14",
+    "rollup": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
