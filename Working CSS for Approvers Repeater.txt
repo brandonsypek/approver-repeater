@@ -1,4 +1,4 @@
-#_067a879a6738444b98e715e354e27ae9 {
+#Multi Line Text ID Here {
   width: 0 !important;
   height: 0 !important;
   opacity: 0 !important;
@@ -10,9 +10,9 @@
 }
 
 /* Target the textbox's parent container */
-div.nf-filler-control[data-controlid="_067a879a6738444b98e715e354e27ae9"],
-div.nf-filler-control-inner:has(#_067a879a6738444b98e715e354e27ae9),
-div.ms-formfield:has(#_067a879a6738444b98e715e354e27ae9) {
+div.nf-filler-control[data-controlid="Multi Line Text ID Here"],
+div.nf-filler-control-inner:has(#Multi Line Text ID Here),
+div.ms-formfield:has(#Multi Line Text ID Here) {
   width: 0 !important;
   height: 0 !important;
   margin: 0 !important;
