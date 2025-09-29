@@ -475,7 +475,7 @@ export default class ApproversRepeater extends LitElement {
     const top = Math.max(1, Math.min(this.maxSuggestions || 8, 25));
     console.log('Graph search:', { term, endpoint: this.graphEndpoint, top });
     if (this.graphEndpoint === 'users') {
-      const url = `https://graph.microsoft.com/v1.0/users?$search="displayName:${encodeURIComponent(term)}"&$filter=endsWith(mail,'yageo.com')&$orderBy=displayName&$top=${top}`;
+      const url = `https://graph.microsoft.com/v1.0/users?$search="displayName:${encodeURIComponent(term)}"&$filter=endsWith(mail,'FILTER EMAIL SEARCH RESULTS.com')&$orderBy=displayName&$top=${top}`;
       console.log('Url', url);
       const res = await fetch(url, { headers: { Authorization: `Bearer ${token}`, 'ConsistencyLevel': 'eventual' } });
       if (!res.ok) {
@@ -765,4 +765,5 @@ export default class ApproversRepeater extends LitElement {
     console.log('Rendered edit/new mode UI');
     return editHtml;
   }
+
 }
